@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
 function App() {
+ const [glow, setGlow] = useState(null)
+
+ let redGlow = ''
+ let yellowGlow = ''
+ let greenGlow = ''
+
+ if (glow == 'red') {
+   redGlow = 'selectedRed'
+ } else if (glow == 'yellow') {
+   yellowGlow = 'selectedYellow'
+ } else if (glow == 'green') {
+   greenGlow = 'selectedGreen'
+ }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      <div className='trafficBody'>
+        <div className={'redLight ' + redGlow} onClick={() => setGlow('red')}></div>
+        <div className={'yellowLight ' + yellowGlow} onClick={() => setGlow('yellow')}></div>
+        <div className={'greenLight ' + greenGlow} onClick={() => setGlow('green')} ></div>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+
